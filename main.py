@@ -17,6 +17,5 @@ for i in range(len(calories_list)):
             max = sum
         sum = 0   
 
-print(calories_list[-1])
 print(max)
 
