@@ -7,15 +7,29 @@ for line in f:
         calories_list.append(line)
 f.close()
 
-max = 0
+
 sum=0
+max_list = [0,0,0]
 for i in range(len(calories_list)):
     if type(calories_list[i]) == int:
         sum+=calories_list[i]
-    else:
-        if sum > max:
-            max = sum
+        
+    if calories_list[i] == '\n' or i == (len(calories_list)-1):
+        if sum > max_list[0]:
+            max_list[2]=max_list[1]
+            max_list[1] = max_list[0]
+            max_list[0] = sum
+        elif sum > max_list[1]:
+            max_list[2]=max_list[1]
+            max_list[1] = sum
+        elif sum > max_list[2]:
+            max_list[2] = sum
         sum = 0   
 
-print(max)
+total_sum = 0
+for num in max_list:
+    total_sum += num
+
+print(total_sum)
+
 
